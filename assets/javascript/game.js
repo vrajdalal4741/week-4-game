@@ -6,7 +6,7 @@ let crystal3 = 0;
 let crystal4 = 0;
 let crystalSum = 0;
 let sumCrystal = $("#currentSum");
-let randNum;
+let randNum = 0;
 let winCounter = $("#winCounter");
 let lossCounter = $("#lossCounter");
 let counterWin = 0;
@@ -34,6 +34,12 @@ function assignCrystalValues() {
     crystal4 = randomNumber12();
 }
 
+function reset() {
+    randomNumber120();
+    assignCrystalValues();
+    crystalSum = 0;
+    sumCrystal.html(crystalSum);
+};
 
 randomNumber120();
 assignCrystalValues();
@@ -45,24 +51,27 @@ $('#crystal1').on("click", function(event) {
     console.log(crystalSum);
     console.log(crystal1);
     if (crystalSum === randNum) {
-        winCounter++;
+        counterWin++;
         winCounter.html(counterWin);
-    } else {
-        lossCounter++;
+        reset();
+    } else if (crystalSum > randNum) {
+        counterLoss++
         lossCounter.html(counterLoss);
+        reset();
     }
 });
 $('#crystal2').on("click", function(event) {
     crystalSum += crystal2;
     sumCrystal.text(crystalSum);
-    console.log(crystalSum);
     console.log(crystal2);
     if (crystalSum === randNum) {
-        winCounter++;
+        counterWin++;
         winCounter.html(counterWin);
-    } else {
-        lossCounter++;
+        reset();
+    } else if (crystalSum > randNum) {
+        counterLoss++;
         lossCounter.html(counterLoss);
+        reset();
     }
 });
 $('#crystal3').on("click", function(event) {
@@ -71,11 +80,13 @@ $('#crystal3').on("click", function(event) {
     console.log(crystalSum);
     console.log(crystal3);
     if (crystalSum === randNum) {
-        winCounter++;
+        counterWin++;
         winCounter.html(counterWin);
-    } else {
-        lossCounter++;
+        reset();
+    } else if (crystalSum > randNum) {
+        counterLoss++;
         lossCounter.html(counterLoss);
+        reset();
     }
 });
 $('#crystal4').on("click", function(event) {
@@ -84,10 +95,12 @@ $('#crystal4').on("click", function(event) {
     console.log(crystalSum);
     console.log(crystal4);
     if (crystalSum === randNum) {
-        winCounter++;
+        counterWin++;
         winCounter.html(counterWin);
-    } else {
-        lossCounter++;
+        reset();
+    } else if (crystalSum > randNum) {
+        counterLoss++;
         lossCounter.html(counterLoss);
+        reset();
     }
 });

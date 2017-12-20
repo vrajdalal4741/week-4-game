@@ -1,42 +1,93 @@
 //
-let numberRandom = $("#randomNumberheading");
-let crystal1 = $("#crystalOne");
-let crystal2 = $("#crystalTwo");
-let crystal3 = $("#crystalThree");
-let crystal4 = $("#crystalFour");
-let crystalSum = $("#yourSum");
+let numberRandom = $("#randomNumber");
+let crystal1 = 0;
+let crystal2 = 0;
+let crystal3 = 0;
+let crystal4 = 0;
+let crystalSum = 0;
+let sumCrystal = $("#currentSum");
+let randNum;
+let winCounter = $("#winCounter");
+let lossCounter = $("#lossCounter");
+let counterWin = 0;
+let counterLoss = 0;
 
-//
-
-function randomNumber() {
-    numberRandom.text(Math.floor(Math.random() * 101 + 19));
+function randomNumber120() {
+    randNum = Math.floor(Math.random() * 101 + 19);
+    insertNum();
 }
 
-function randomChoices() {
-    crystal1.text(Math.floor(Math.random() * 11 + 1));
-    crystal2.text(Math.floor(Math.random() * 11 + 1));
-    if (crystal2 == crystal1) {
-        crystal2.text(Math.floor(Math.random() * 11 + 1));
-    }
-    crystal3.text(Math.floor(Math.random() * 11 + 1));
-    if (crystal3 == crystal1 || crystal3 == crystal2) {
-        crystal2.text(Math.floor(Math.random() * 11 + 1));
-    }
-    crystal4.text(Math.floor(Math.random() * 11 + 1))
-    if (crystal4 == crystal1 || crystal4 == crystal2 || crystal4 == crystal3) {
-        crystal2.text(Math.floor(Math.random() * 11 + 1));
-    }
+function randomNumber12() {
+    crystalNum = Math.floor(Math.random() * 12 + 1);
+    return crystalNum;
+
 }
 
-crystal1.addEventListener("click", function(event) {
+function insertNum() {
+    numberRandom.html(randNum);
+}
+
+function assignCrystalValues() {
+    crystal1 = randomNumber12();
+    crystal2 = randomNumber12();
+    crystal3 = randomNumber12();
+    crystal4 = randomNumber12();
+}
+
+
+randomNumber120();
+assignCrystalValues();
+
+
+$('#crystal1').on("click", function(event) {
     crystalSum += crystal1;
+    sumCrystal.text(crystalSum);
+    console.log(crystalSum);
+    console.log(crystal1);
+    if (crystalSum === randNum) {
+        winCounter++;
+        winCounter.html(counterWin);
+    } else {
+        lossCounter++;
+        lossCounter.html(counterLoss);
+    }
 });
-crystal2.addEventListener("click", function(event) {
+$('#crystal2').on("click", function(event) {
     crystalSum += crystal2;
+    sumCrystal.text(crystalSum);
+    console.log(crystalSum);
+    console.log(crystal2);
+    if (crystalSum === randNum) {
+        winCounter++;
+        winCounter.html(counterWin);
+    } else {
+        lossCounter++;
+        lossCounter.html(counterLoss);
+    }
 });
-crystal3.addEventListener("click", function(event) {
+$('#crystal3').on("click", function(event) {
     crystalSum += crystal3;
+    sumCrystal.text(crystalSum);
+    console.log(crystalSum);
+    console.log(crystal3);
+    if (crystalSum === randNum) {
+        winCounter++;
+        winCounter.html(counterWin);
+    } else {
+        lossCounter++;
+        lossCounter.html(counterLoss);
+    }
 });
-crystal4.addEventListener("click", function(event) {
+$('#crystal4').on("click", function(event) {
     crystalSum += crystal4;
+    sumCrystal.text(crystalSum);
+    console.log(crystalSum);
+    console.log(crystal4);
+    if (crystalSum === randNum) {
+        winCounter++;
+        winCounter.html(counterWin);
+    } else {
+        lossCounter++;
+        lossCounter.html(counterLoss);
+    }
 });
